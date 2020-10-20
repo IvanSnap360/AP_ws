@@ -1,0 +1,310 @@
+<?xml version="1.0" ?>
+<robot name="palletizer_model" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include filename="$(find palletizer_arm_model_gazebo)/urdf/palletizer_arm.gazebo" />
+	<link name ="world"/>
+	<joint name="pal_base" type="fixed">
+		<parent link="world"/>
+		<child link="pal_link0"/>
+		<origin xyz = "0 0.231257 0.01" rpy="0 0 -1.57" />
+	</joint>
+
+	<link name="pal_link0">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link0.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 ${0.001 * 25.0}" rpy="0 0 0"/>
+			<mass value="1"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint0" type="continuous">
+		<parent link="pal_link0"/>
+		<child link="pal_link1"/>
+		<origin xyz = "0 0 ${0.001*107.0}" rpy="0 0 1.57" />
+		<axis xyz="0 0 1" />
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link1">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link1.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint1" type="revolute">
+		<parent link="pal_link1"/>
+		<child link="pal_link2"/>
+		<origin xyz = "${- 0.001 * 6.5} ${-0.001 * 21.13} ${0.001 * 46.0}" rpy="0 -1.57 0" />
+		<axis xyz="0 0 -1" />
+		<limit effort="1.0" lower="-1.57" upper="1.57" velocity="10.0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link2">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link2.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint2" type="revolute">
+		<parent link="pal_link1"/>
+		<child link="pal_link8"/>
+		<origin xyz = "${0.001*6.5} ${-0.001*21.13} ${0.001*46.36}" rpy="0 0 0" />
+		<axis xyz="-1 0 0" />
+		<limit effort="1.0" lower="-1.57" upper="1.57" velocity="5.0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link3">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link3.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<link name="pal_link4">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link4.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint3" type="revolute">
+		<parent link="pal_link4"/>
+		<child link="pal_link4_1"/>
+		<origin xyz = "0 ${-0.001*49.5} ${-0.001*17}" rpy="0 0 0" />
+		<axis xyz="0 0 -1" />
+		<limit effort="1.0" lower="-3.14" upper="3.14" velocity="5.0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link4_1">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link4_1.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="prisos_joint" type="revolute">
+		<parent link="pal_link4_1"/>
+		<child link="prisos"/>
+		<origin xyz = "${0.001*1.0} ${-0.001*41.0} ${-0.001*66.0}" rpy="0 0 -1.57" />
+		<axis xyz="0 0 -1" />
+		<limit effort="1.0" lower="-3.14" upper="3.14" velocity="5.0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="prisos">
+		<collision>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/prisos.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/prisos.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint4" type="continuous">
+		<parent link="pal_link3"/>
+		<child link="pal_link4"/>
+		<origin xyz = "${-0.001*160.0} 0 0" rpy="-1.57 -1.57 0" />
+		<axis xyz="1 0 0" />
+		<mimic joint="pal_joint1" multiplier="-1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<joint name="pal_joint9" type="continuous">
+		<parent link="pal_link1"/>
+		<child link="pal_link5"/>
+		<origin xyz = "${0.001*33.9} ${0.001*13.28} ${0.001*70.42}" rpy="1.57 0 3.14" />
+		<axis xyz="1 0 0" />
+		<mimic joint="pal_joint1" multiplier="1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link5">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link5.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint5" type="continuous">
+		<parent link="pal_link2"/>
+		<child link="pal_link6"/>
+		<origin xyz = "${0.001*148.0} 0 ${-0.001*20.5}" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<mimic joint="pal_joint3" multiplier="-1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link6">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link6.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint6" type="continuous">
+		<parent link="pal_link4"/>
+		<child link="pal_link7"/>
+		<origin xyz = "${0.001*24.0} ${-0.001*34.404} ${0.001*24.09}" rpy="3.14 0 0" />
+		<axis xyz="1 0 0" />
+		<mimic joint="pal_joint3" multiplier="-1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="pal_link7">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link7.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="pal_joint7" type="continuous">
+		<parent link="pal_link2"/>
+		<child link="pal_link3"/>
+		<origin xyz = "${0.001*148.0} 0 0" rpy="0 3.14 -1.57" />
+		<axis xyz="0 0 1" />
+		<mimic joint="pal_joint2" multiplier="1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+
+	<link name="pal_link8">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link8.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="pal_joint8" type="continuous">
+		<parent link="pal_link8"/>
+		<child link="pal_link9"/>
+		<origin xyz = "${-0.001*21.0} ${0.001*54.0} 0" rpy="1.57 0 0" />
+		<axis xyz="1 0 0" />
+		<mimic joint="pal_joint1" multiplier="-1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+
+	<link name="pal_link9">
+		<visual>
+			<geometry>
+				<mesh filename="package://palletizer_arm_model_gazebo/meshes/link9.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="prisos_point_joint" type="continuous">
+		<parent link="prisos"/>
+		<child link="prisos_point"/>
+		<origin xyz = "0 0 -0.141" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+                <limit effort="0.0001" lower="-0.0001" upper="0.0001" velocity="0.1"/>
+		<dynamics damping="1"/>
+	</joint>
+	<link name="prisos_point">
+		<visual>
+			<geometry>
+        			<cylinder length="0.001" radius="0.009"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 ${0.001 * 25.0} 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+</robot>

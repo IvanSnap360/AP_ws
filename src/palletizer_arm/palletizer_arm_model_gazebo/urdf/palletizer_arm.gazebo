@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<robot>
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+		        <robotNamespace>/palletizer_robot</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+
+	<transmission name="pal_tran0">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint0">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor0">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<transmission name="pal_tran1">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran2">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint2">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor2">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran3">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint3">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor3">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran4">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint4">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor4">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran5">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint5">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor5">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran6">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint6">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor6">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran7">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint7">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor7">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran8">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint8">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor8">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_prisos">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="prisos_joint">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor_prisos">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="pal_tran9">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="pal_joint9">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="pal_motor9">
+			<hardwareInterface>hardware_interface/EffortJointInterfacee</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+  <gazebo reference="pal_link0"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link1"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link2"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link3"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link4"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link4_1"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link5"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link6"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link7"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link8"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="pal_link9"> 
+    <material>Gazebo/Gray</material>  
+  </gazebo>
+  <gazebo reference="prisos"> 
+    <material>Gazebo/Orange</material>  
+  </gazebo>
+  <gazebo reference="prisos_point"> 
+    <material>Gazebo/Orange</material>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+    <minDepth>0.003</minDepth>
+    <maxVel>0</maxVel>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+</robot>
+
