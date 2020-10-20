@@ -1,0 +1,20 @@
+<launch>
+
+<!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find angle_arm_model_gazebo)/urdf/angle_arm.urdf'"/>
+  <rosparam file="$(find angle_arm_model_gazebo)/config/config.yaml" command="load"/>
+  
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="angle_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model angle_robot" />
+
+    <node name="controller_spawner_angle" pkg ="controller_manager" type="spawner" respawn="false" output="screen"
+ ns="/angle_robot" args="joint_state_controller angle_joint1_controller angle_joint2_controller angle_joint3_controller 
+angle_joint4_controller angle_joint5_controller angle_gripper_controller angle_gripper_sub_controller"/>
+
+    <node name="robot_state_publisher_angle" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+        <remap from="/joint_states" to="/angle_robot/joint_states" />
+    </node>
+    <node name="angle_publish_kin_joint_state_model" pkg="angle_arm_model_gazebo" type="publish_kin_joint_state_model.py" output="screen"/>
+    <include file="$(find angle_arm_pkg)/launch/angle_arm_control.launch"/>
+</launch>

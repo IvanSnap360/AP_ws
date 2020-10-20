@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<robot name="angle_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+        <xacro:include filename="$(find angle_arm_model_gazebo)/urdf/angle_arm.gazebo" />
+	<link name ="world"/>
+	<joint name="ang_base" type="fixed">
+		<parent link="world"/>
+		<child link="ang_link0"/>
+		<origin rpy = "0 0 3.14" xyz="0 -0.231257 0.01" />
+	</joint>
+
+	<link name="ang_link0">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link1.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0.5" rpy="0 0 0"/>
+			<mass value="1"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="ang_joint1" type="continuous">
+		<parent link="ang_link0"/>
+		<child link="ang_link1"/>
+		<origin xyz = "0 0 0.107" rpy="1.57 0 -1.57" />
+		<axis xyz="0 1 0" />
+		<dynamics damping="0.99"/>
+		<limit effort="5.0" velocity="5.0"/>
+	</joint>
+
+	<link name="ang_link1">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link2.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0.25 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="ang_joint2" type="continuous">
+		<parent link="ang_link1"/>
+		<child link="ang_link2"/>
+		<origin xyz = "0 0.0518 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<dynamics damping="0.99"/>
+		<limit effort="5.0" velocity="5.0"/>
+	</joint>
+
+	<link name="ang_link2">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link3.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0.15 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="ang_joint3" type="continuous">
+		<parent link="ang_link2"/>
+		<child link="ang_link3"/>
+		<origin xyz = "0.0626 0.1989 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<dynamics damping="0.99"/>
+		<limit effort="5.0" velocity="5.0"/>
+	</joint>
+
+	<link name="ang_link3">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link4.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="ang_joint4" type="continuous">
+		<parent link="ang_link3"/>
+		<child link="ang_link4"/>
+		<origin xyz = "0.13093 0 0" rpy="-1.57 0 1.57" />
+		<axis xyz="0 -1 0" />
+		<dynamics damping="0.99"/>
+		<limit effort="5.0" velocity="5.0"/>
+	</joint>
+
+	<link name="ang_link4">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link5.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="ang_joint5" type="continuous">
+		<parent link="ang_link4"/>
+		<child link="ang_link5"/>
+		<origin xyz = "0 0 -0.06174" rpy="0 0 0" />
+		<axis xyz="0 0 -1" />
+		<dynamics damping="0.99"/>
+		<limit effort="5.0" velocity="5.0"/>
+	</joint>
+
+	<link name="ang_link5">
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link6.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="ang_gripper" type="prismatic">
+		<parent link="ang_link5"/>
+		<child link="ang_link6"/>
+		<origin xyz = "0 0 -0.0715" rpy="1.57 3.14 0" />
+		<axis xyz="0 0 1" />
+		<limit effort="3" lower="0" upper="0.025" velocity="0.05"/>
+		<dynamics damping="0.99"/>
+	</joint>
+
+	<link name="ang_link6">
+		<collision>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link7.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link7.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="ang_gripper_sub" type="prismatic">
+		<parent link="ang_link5"/>
+		<child link="ang_link7"/>
+		<origin xyz = "0 0 -0.0715" rpy="-1.57 0 0" />
+		<axis xyz="0 0 1" />
+		<limit effort="3" lower="0" upper="0.025" velocity="0.05"/>
+	        <mimic joint="ang_gripper" multiplier="1" offset="0"/>
+		<dynamics damping="0.99"/>
+	</joint>
+	<link name="ang_link7">
+		<collision>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link7.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://angle_arm_model_gazebo/meshes/link7.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+</robot>

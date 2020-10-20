@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<robot name="palletizer_model" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include filename="$(find world_pkg)/urdf/object.gazebo"/>
+	<link name ="world"/>
+	<joint name="poligon_joint" type="fixed">
+		<parent link="world"/>
+		<child link="poligon"/>
+		<origin xyz = "0 0 0" rpy="0 0 0" />
+	</joint>
+	<link name="poligon">
+		<collision>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/poligon.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/poligon.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="10"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+	<joint name="light_ang_joint" type="fixed">
+		<parent link="poligon"/>
+		<child link="light_angle"/>
+		<origin xyz = "0.292 -0.415 0.01" rpy="0 0 0" />
+	</joint>
+
+	<link name="light_angle">
+		<collision>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/light.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/light.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+	<joint name="light_pal_joint" type="fixed">
+		<parent link="poligon"/>
+		<child link="light_palletizer"/>
+		<origin xyz = "0.292 0.415 0.01" rpy="0 0 0" />
+	</joint>
+
+	<link name="light_palletizer">
+		<collision>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/light.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://world_pkg/meshes/light.dae" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia
+				ixx="0.01" ixy="0.0" ixz="0.0"
+				iyy="0.01" iyz="0.0"
+				izz="0.01"/>
+		</inertial>
+	</link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0 0 0.5" rpy="0 1.57 0"/>
+    <parent link="poligon"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.01 0.05 0.05"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.01 0.05 0.05"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <joint name="camera_optical_joint" type="fixed">
+    <!-- these values have to be these values otherwise the gazebo camera image
+        won't be aligned properly with the frame it is supposedly originating from -->
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+  </link>
+</robot>

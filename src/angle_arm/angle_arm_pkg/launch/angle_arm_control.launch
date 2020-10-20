@@ -1,0 +1,5 @@
+<launch>
+		<node name = "angle_main_node_to_point_control" pkg = "angle_arm_pkg" type = "main_to_point_node.py" output = "screen"/>
+		<node name="angle_convert_and_publish" pkg="angle_arm_pkg" type = "publish_joint_state.py" output = "screen"/>
+</launch>
+

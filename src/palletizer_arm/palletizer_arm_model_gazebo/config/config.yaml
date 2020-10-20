@@ -1,0 +1,49 @@
+palletizer_robot:
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50
+
+    pal_joint0_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint0
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint1_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint1
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint2_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint2
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint3_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint3
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint4_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint4
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint5_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint5
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint6_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint6
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint7_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint7
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint8_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint8
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint9_controller:
+        type: effort_controllers/JointPositionController
+        joint: pal_joint9
+        pid: {p: 1000.0, i: 0.01, d: 0.0}
+    pal_joint_prisos_controller:
+        type: effort_controllers/JointPositionController
+        joint: prisos_joint
+        pid: {p: 1000.0, i: 0.01, d: 0.0}

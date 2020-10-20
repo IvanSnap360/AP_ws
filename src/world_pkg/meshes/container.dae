@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema">
+  <asset>
+    <contributor />
+    <unit meter="1" />
+  </asset>
+  <library_lights />
+  <library_materials />
+  <library_effects />
+  <library_cameras />
+  <library_geometries>
+    <geometry id="mesh_1">
+      <mesh>
+        <source id="mesh_1-position" name="position">
+          <float_array id="mesh_1-position-array" count="48">7.5 50 65 7.5 -50 15 7.5 50 15 7.5 -50 65 -7.5 -50 65 -7.5 50 15 -7.5 -50 15 -7.5 50 65 -100 50 15 -100 -50 15 100 50 15 100 50 0 -100 50 0 100 -50 0 100 -50 15 -100 -50 0 </float_array>
+          <technique_common>
+            <accessor source="#mesh_1-position-array" count="16" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="mesh_1-normal" name="normal">
+          <float_array id="mesh_1-normal-array" count="18">1 0 0 -1 0 0 0 0 1 0 1 0 0 -1 0 0 0 -1 </float_array>
+          <technique_common>
+            <accessor source="#mesh_1-normal-array" count="6" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="mesh_1-vertices">
+          <input semantic="POSITION" source="#mesh_1-position" />
+        </vertices>
+        <triangles material="default" count="28">
+          <input semantic="VERTEX" source="#mesh_1-vertices" offset="0" />
+          <input semantic="NORMAL" source="#mesh_1-normal" offset="1" />
+          <p>0 0 1 0 2 0 0 0 3 0 1 0 4 1 5 1 6 1 4 1 7 1 5 1 0 2 7 2 4 2 0 2 4 2 3 2 5 2 8 2 9 2 5 2 9 2 6 2 2 3 10 3 11 3 7 3 0 3 2 3 7 3 2 3 5 3 12 3 2 3 11 3 12 3 5 3 2 3 8 3 5 3 12 3 10 0 13 0 11 0 10 0 14 0 13 0 6 4 9 4 15 4 4 4 6 4 1 4 3 4 4 4 1 4 13 4 6 4 15 4 13 4 1 4 6 4 14 4 1 4 13 4 9 1 12 1 15 1 9 1 8 1 12 1 10 2 2 2 1 2 10 2 1 2 14 2 12 5 11 5 15 5 15 5 11 5 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_images />
+  <library_visual_scenes>
+    <visual_scene id="Scene">
+      <node id="node_1" sid="node_1" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#mesh_1" />
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <library_animations />
+  <scene>
+    <instance_visual_scene url="#Scene" />
+  </scene>
+</COLLADA>

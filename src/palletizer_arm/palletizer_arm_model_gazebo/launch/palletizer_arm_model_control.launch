@@ -1,0 +1,22 @@
+<launch>
+
+<!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find palletizer_arm_model_gazebo)/urdf/palletizer_arm.urdf'"/>
+  <rosparam file="$(find palletizer_arm_model_gazebo)/config/config.yaml" command="load"/>
+  
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="palletizer_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model palletizer_robot" />
+
+    <node name="controller_spawner_palletizer" pkg ="controller_manager" type="spawner" respawn="false" output="screen"
+ ns="/palletizer_robot" args="joint_state_controller pal_joint0_controller pal_joint1_controller pal_joint2_controller
+ pal_joint3_controller pal_joint4_controller pal_joint5_controller pal_joint6_controller pal_joint7_controller pal_joint8_controller 
+pal_joint9_controller pal_joint_prisos_controller"/>
+
+    <node name="robot_state_publisher_palletizer" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+        <remap from="/joint_states" to="/palletizer_robot/joint_states" />
+    </node>
+    <node name="pal_publish_kin_joint_state_model" pkg="palletizer_arm_model_gazebo" type="publish_kin_joint_state_model.py" output="screen"/>
+    <include file="$(find palletizer_arm_pkg)/launch/palletizer_arm_control.launch"/>
+    <node name = "vacuum" type = "vacuum_graspper.py" pkg = "palletizer_arm_model_gazebo" output = "screen"/>
+</launch>
